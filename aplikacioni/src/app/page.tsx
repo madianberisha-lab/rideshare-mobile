@@ -1,33 +1,41 @@
+
 import KartaUdhetimi from "@/components/KartaUdhetimi";
-import { udhetimet } from "@/lib/udhetimet";
+import { lexoUdhetimet, type Udhetim } from "@/lib/udhetimet";
 
-export default function Home() {
-    return (
-        <main className="min-h-screen bg-gray-100 px-4 py-8">
-            <div className="mx-auto max-w-3xl">
-                <header className="mb-8">
-                    <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
-                        AAB · RideShare
-                    </p>
+// Lexo bazen perseri ne cdo kerkese per kete faqe.
+export const dynamic = "force-dynamic";
 
-                    <h1 className="mt-2 text-3xl font-bold text-gray-900">
-                        Udhëtimet e disponueshme
-                    </h1>
-
-                    <p className="mt-2 text-gray-600">
-                        Zgjidh një udhëtim dhe shiko detajet.
-                    </p>
-                </header>
-
-                <div className="space-y-4">
-                    {udhetimet.map((udhetim) => (
-                        <KartaUdhetimi
-                            key={udhetim.id}
-                            udhetim={udhetim}
-                        />
-                    ))}
-                </div>
-            </div>
-        </main>
+export default async function Home() {
+    let udhetimet: Udhetim[];
+    try {
+        udhetimet = await lexoUdhetimet();
+    } catch {
+        return (
+            <main>
+            <h1>RideShare </h1>
+            < p role = "alert" > Nuk u lidhem me databazen.Provo perseri.</p>
+                < a className = "action" href = "/" > Provo perseri </a>
+                    </main>
     );
+    }
+
+    return (
+        <main>
+        <h1>RideShare · Udhetimet per AAB </h1>
+            < p > Burimi: Neon · te dhena fiktive per ushtrime </p>
+    {
+        udhetimet.length === 0 ? (
+            <p>Nuk ka udhetime per momentin.</p>
+      ) : (
+            <div className= "trip-list" >
+            {
+                udhetimet.map((udhetim) => (
+                    <KartaUdhetimi key= { udhetim.id } udhetim = { udhetim } />
+          ))
+            }
+            </div>
+      )
+    }
+    </main>
+  );
 }
