@@ -1,7 +1,7 @@
 # RideShare — Java 5 · Hyrja dhe lejet
 
 Ruaje si java-05.md pranë README, jashtë aplikacioni/.
-Hiqi shenjat [PLOTËSO]. Mos vendos sekrete, email ose pamje të kredencialeve.
+Hiqi shenjat . Mos vendos sekrete, email ose pamje të kredencialeve.
 
 ## Çfarë ndërtova
 [Shtova hyrjen me GitHub dhe panelin e perdoruesit. Identiteti tregon kush eshte perdoruesi, roli tregon nese eshte udhetar apo shofer, ndersa pronesia tregon cilin udhetim ka te drejte ta ndryshoje shoferi. Serveri kontrollon nese perdoruesi ka leje per ta ndryshuar udhetimin.] Shpjego dallimin mes identitetit, rolit dhe pronësisë në aplikacionin tënd.
