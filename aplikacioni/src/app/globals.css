@@ -178,3 +178,26 @@ code {
     padding: 18px;
   }
 }
+.trip-card {
+    padding: 24px;
+    background: linear-gradient(145deg, #ffffff, #f1f6ff);
+    border: 1px solid #dbe5f2;
+    border-radius: 18px;
+    box-shadow: 0 5px 16px rgba(15, 23, 42, 0.06);
+}
+
+.trip-route {
+    color: #12346b;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.trip-seats {
+    color: #166534;
+    font-weight: 700;
+}
+
+.trip-card .action {
+    display: flex;
+    width: 100%;
+}
