@@ -1,15 +1,22 @@
 import Link from "next/link";
 import type { Udhetim } from "@/lib/udhetimet";
+import Preferimi from "@/components/Preferimi";
 
 type Props = {
   udhetim: Udhetim;
+  numerPreferimesh: number;
+  preferuar: boolean;
 };
 
-export default function KartaUdhetimi({ udhetim }: Props) {
+export default function KartaUdhetimi({
+  udhetim,
+  numerPreferimesh,
+  preferuar,
+}: Props) {
   return (
     <article className="trip-card">
       <p className="trip-route">
-        {udhetim.nisja} → {udhetim.destinacioni}
+        {udhetim.nisja} -&gt; {udhetim.destinacioni}
       </p>
 
       <p>
@@ -21,14 +28,20 @@ export default function KartaUdhetimi({ udhetim }: Props) {
       </p>
 
       <p className="trip-seats">
-        {udhetim.vende} vende të lira
+        {udhetim.vende} vende te lira
       </p>
+
+      <Preferimi
+        udhetimiId={Number(udhetim.id)}
+        numerFillestar={numerPreferimesh}
+        ruajturFillestar={preferuar}
+      />
 
       <Link
         href={`/udhetimi/${udhetim.id}`}
         className="action"
       >
-        Shiko detajet →
+        Shiko detajet
       </Link>
     </article>
   );
